@@ -43,5 +43,4 @@ typedef struct s_data
 	t_img		img;
 }				t_data;
 
-
 # endif

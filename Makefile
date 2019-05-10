@@ -42,6 +42,10 @@ OBJ_DIR= obj/
 OBJ= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 LIB= -L /usr/local/lib -lmlx\
 	 -L libft -lft
+INCLUDES=	hdr/fractol.h\
+			hdr/proto.h\
+			hdr/struct.h\
+			hdr/keycode.h
 
 ###############################################################################
 #								Rules										  #
@@ -60,7 +64,7 @@ $(NAME): $(OBJ)
 obj:
 	@mkdir obj
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c |obj
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES)|obj
 	@ $(CC) -o $@ -c $< $(CFLAGS)
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
