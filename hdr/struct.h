@@ -13,6 +13,8 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# include "fractol.h"
+
 typedef struct s_cpx
 {
 	double		x;
@@ -41,6 +43,7 @@ typedef struct s_data
 	double		xoff;
 	double		yoff;
 	t_img		img;
+	pthread_t	th[THREADS];
 }				t_data;
 
 # endif

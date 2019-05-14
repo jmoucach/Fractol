@@ -32,7 +32,8 @@ int main(int ac, char **av)
 		{
 			init(&data);
 			ft_putendl("Init");
-			print_fract(&data);
+			threads(&data);
+			ft_putendl("Threads");
 			mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img.img_ptr, 0, 0);
 			ft_mlx(&data);
 		}

@@ -25,10 +25,10 @@ int		deal_key(void *param)
 		exit(EXIT_SUCCESS);
 	}
 	if (data->keyboard[KEY_PAD_SUB])
-		if (data->zoom > 0.1)
-			data->zoom -= 0.1;
+		if (data->zoom > 0.2)
+			data->zoom -= 0.2;
 	if (data->keyboard[KEY_PAD_ADD])
-		data->zoom += 0.1;
+		data->zoom += 0.2;
 	if (data->keyboard[KEY_PAGE_UP])
 		data->max_iter += 1;
 	if (data->keyboard[KEY_PAGE_DOWN])
@@ -55,7 +55,7 @@ int		deal_key(void *param)
 	}
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 		ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
-		print_fract(data);
+		threads(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
 	return (1);
 }
@@ -70,19 +70,12 @@ int mouse_press(int button, int x, int y, void *param)
 	{
 		old_zoom = data->zoom;
 		data->zoom += 0.15;
-		data->xoff -= (0.05 / data->zoom) * ((WIN_WIDTH / 2 - x) / 64);
+		data->xoff -= (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - x) / 64);
 		data->yoff -= (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - y) / 64);
-	}
-	if (button == SCROLL_DOWN)
-	{
-		old_zoom = data->zoom;
-		data->zoom -= 0.1;
-		data->xoff += (0.05 / data->zoom) * ((WIN_WIDTH / 2 - x) / 64);
-		data->yoff += (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - y) / 64);
 	}
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 		ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
-		print_fract(data);
+		threads(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
 		return (1);
 }

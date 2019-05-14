@@ -12,27 +12,29 @@
 
 #include "../hdr/fractol.h"
 
-void	mandelbrot_set(t_data *data)
+void	mandelbrot_set(t_data *data, int th)
 {
 	t_cpx	start;
-	unsigned int y;
-	unsigned int x;
+	int y;
+	int x;
 	t_cpx	pt;
 	t_cpx	new;
 	t_cpx	old;
 	int i;
+	int limit;
 
 	start.x = -0.75;
 	start.y = 0.0;
+	limit = (th + 1) * 50;
 
-	y = 0;
-	while (y < WIN_HEIGHT)
+	y = th * 50;
+	while (y < limit)
 	{
 		pt.y = (y - WIN_HEIGHT / 2.0) / (0.5 * data->zoom * WIN_HEIGHT) + data->yoff;
 		x = 0;
-		while (x < WIN_WIDTH)
+		while (x < WIN_HEIGHT)
 		{
-			pt.x = 1.5 * (x - WIN_WIDTH / 2.0) / (0.5 * data->zoom * WIN_WIDTH) + data->xoff;
+			pt.x = 1.5 * (x - WIN_HEIGHT / 2.0) / (0.5 * data->zoom * WIN_HEIGHT) + data->xoff;
 			new.x = 0;
 			new.y = 0;
 			old.y = 0;
@@ -54,5 +56,6 @@ void	mandelbrot_set(t_data *data)
 		}
 		y++;
 	}
+	pthread_exit(NULL);
 }
 

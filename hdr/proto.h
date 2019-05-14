@@ -41,7 +41,13 @@ void	print_fract(t_data *data);
 ** Mandelbrot
 */
 
-void	mandelbrot_set(t_data *data);
+void	mandelbrot_set(t_data *data, int th);
+
+/*
+** Julia
+*/
+
+void	julia_set(t_data *data, int th);
 
 /*
 ** Key handler
@@ -52,5 +58,11 @@ int		deal_key(void *param);
 int		key_press(int key, void *param);
 int mouse_press(int button, int x, int y, void *param);
 
+/*
+** Threads
+*/
+
+void	threads(t_data *data);
+void	selector(t_data *data);
 
 #endif

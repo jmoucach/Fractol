@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	julia_set(t_data *data)
+# include "../hdr/fractol.h"
+
+void	julia_set(t_data *data, int th)
 {
-	
+	(void)th;
+	(void)data;
+	ft_putendl("julia");
 }

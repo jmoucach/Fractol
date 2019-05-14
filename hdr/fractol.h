@@ -15,13 +15,15 @@
 
 # include <mlx.h>
 # include <math.h>
+# include <pthread.h>
+
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 800
+# define THREADS 16
+
 # include "../libft/libft.h"
 # include "struct.h"
 # include "proto.h"
 # include "keycode.h"
-
-
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
 
 # endif
