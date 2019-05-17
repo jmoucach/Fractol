@@ -14,15 +14,16 @@
 
 void	selector(t_data *data)
 {
-	static void (*fract[2])(t_data*, int) = {mandelbrot_set, julia_set};
+	static void (*fract[5])(t_data*, int) = {julia_set, mandelbrot_set,
+		mandelbar_set, burning_ship_set, newton_fractal};
 	pthread_t s;
 	int i;
 
 	i = 0;
 	s = pthread_self();
-	while (s != data->th[i])
+	while (s != data->th[i] && i < THREADS)
 		i++;
-	fract[0](data, i);
+	fract[data->fract](data, i);
 	pthread_exit(NULL);
 }
 

@@ -17,9 +17,9 @@
 # include <math.h>
 # include <pthread.h>
 
-# define WIN_WIDTH 1200
+# define WIN_WIDTH 800
 # define WIN_HEIGHT 800
-# define THREADS 16
+# define THREADS 32
 
 # include "../libft/libft.h"
 # include "struct.h"

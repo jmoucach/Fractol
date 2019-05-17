@@ -28,15 +28,12 @@ int main(int ac, char **av)
 	if (ac == 2)
 	{
 		parser(av[1], &data);
-		if (data.fract > 0)
-		{
 			init(&data);
 			ft_putendl("Init");
 			threads(&data);
 			ft_putendl("Threads");
 			mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img.img_ptr, 0, 0);
 			ft_mlx(&data);
-		}
 	}
 	else
 		ft_putendl("Wrong number of argument!\nUsage: ./fractol fractal_name");

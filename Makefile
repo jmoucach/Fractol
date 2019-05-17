@@ -28,7 +28,7 @@ MAGENTA= \033[35m
 ################################################################################
 NAME= fractol
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror 
 FRAMEWORK=  -framework OpenGL -framework AppKit
 SRC_DIR= src/
 SRC= main.c\
@@ -38,7 +38,10 @@ SRC= main.c\
 	 print_fract.c\
 	 key_handler.c\
 	 threads.c\
-	 julia_set.c
+	 julia_set.c\
+	 mandelbar_set.c\
+	 burning_ship_set.c\
+	 newton_fractal.c
 SRCS= $(addprefix $(SRC_DIR),$(SRC))
 OBJ_DIR= obj/
 OBJ= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
@@ -66,7 +69,7 @@ $(NAME): $(OBJ)
 obj:
 	@mkdir obj
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES)|obj
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES) Makefile|obj
 	@ $(CC) -o $@ -c $< $(CFLAGS)
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 

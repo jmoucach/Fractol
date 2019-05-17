@@ -25,10 +25,10 @@ int		deal_key(void *param)
 		exit(EXIT_SUCCESS);
 	}
 	if (data->keyboard[KEY_PAD_SUB])
-		if (data->zoom > 0.2)
-			data->zoom -= 0.2;
+		if (data->zoom > 0.4)
+			data->zoom /= 1.1;
 	if (data->keyboard[KEY_PAD_ADD])
-		data->zoom += 0.2;
+		data->zoom *= 1.1;
 	if (data->keyboard[KEY_PAGE_UP])
 		data->max_iter += 1;
 	if (data->keyboard[KEY_PAGE_DOWN])

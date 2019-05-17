@@ -42,12 +42,31 @@ void	print_fract(t_data *data);
 */
 
 void	mandelbrot_set(t_data *data, int th);
+void	give_value(t_data *data, t_cpx *pt, int x, int y);
 
 /*
 ** Julia
 */
 
 void	julia_set(t_data *data, int th);
+
+/*
+** Mandelbar
+*/
+
+void	mandelbar_set(t_data *data, int th);
+
+/*
+** Burning ship
+*/
+
+void	burning_ship_set(t_data *data, int th);
+
+/*
+** Newton
+*/
+
+void	newton_fractal(t_data *data, int th);
 
 /*
 ** Key handler
