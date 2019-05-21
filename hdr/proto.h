@@ -87,13 +87,14 @@ void	barnsley_fern(t_data *data);
 
 int		key_release(int key, void *param);
 int		key_press(int key, void *param);
-int mouse_press(int button, int x, int y, void *param);
+int		dealer(void *param);
+int		mouse_press(int button, int x, int y, void *param);
 
 /*
 ** Deal-key
 */
 
-int		deal_key(void *param);
+int		deal_key(t_data *data);
 
 /*
 ** Deal-key(Sierpinksi)

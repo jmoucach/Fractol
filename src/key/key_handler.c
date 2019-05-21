@@ -18,20 +18,20 @@ int mouse_press(int button, int x, int y, void *param)
 	double	old_zoom;
 
 	data = (t_data *)param;
-	if (button == SCROLL_UP)
+	if (data->fract < 4)
 	{
-		old_zoom = data->zoom;
-		data->zoom += 0.15;
-		data->xoff -= (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - x) / 64);
-		data->yoff -= (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - y) / 64);
-	}
-	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
-	if (data->fract != 4)
+		if (button == SCROLL_UP)
+		{
+			old_zoom = data->zoom;
+			data->zoom += 0.15;
+			data->xoff -= (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - x) / 64);
+			data->yoff -= (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - y) / 64);
+		}
+		mlx_clear_window(data->mlx_ptr, data->win_ptr);
+		ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
 		threads(data);
-	else
-		sierpinski_triangle(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
+	}
 	return (1);
 }
 
@@ -51,4 +51,16 @@ int		key_release(int key, void *param)
 	if (key != KEY_C)
 		data->keyboard[key] = 0;
 	return (0);
+}
+
+int dealer(void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (data->fract < 4)
+		deal_key(data);
+	else if (data->fract == 4)
+		deal_key_sierpinski(data);
+	return (1);
 }

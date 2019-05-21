@@ -12,12 +12,8 @@
 
 #include "../../hdr/fractol.h"
 
-int		deal_key(void *param)
+int		deal_key(t_data *data)
 {
-	t_data	*data;
-
-	data = (t_data *)param;
-
 	if (data->keyboard[KEY_ESCAPE])
 	{
 		ft_putendl("Exit");
@@ -34,10 +30,7 @@ int		deal_key(void *param)
 	}
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
-	if (data->fract == 4)
-		deal_key_sierpinski(data);
-	else
-	{
+
 		if (data->keyboard[KEY_PAD_SUB])
 			if (data->zoom > 0.4)
 				data->zoom /= 1.1;
@@ -63,6 +56,5 @@ int		deal_key(void *param)
 		}
 		threads(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
-	}
 	return (1);
 }

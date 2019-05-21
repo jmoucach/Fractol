@@ -74,11 +74,11 @@ $(NAME): $(OBJS)
 	@echo "$(GREEN)$@ executable created$(WHITE)"
 
 $(SUBDIRS):
-	 mkdir -p $(SUBDIRS)
+	@ mkdir -p $(SUBDIRS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES) Makefile
-	 $(CC) -o $@ -c $< $(CFLAGS)
-	 echo "$(GREEN)[✔]$(WHITE)$@"
+	@ $(CC) -o $@ -c $< $(CFLAGS)
+	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
 	@ echo "$(YELLOW)Deleting objects$(WHITE)"

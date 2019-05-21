@@ -14,6 +14,22 @@
 
 void	deal_key_sierpinski(t_data *data)
 {
+	if (data->keyboard[KEY_ESCAPE])
+	{
+		ft_putendl("Exit");
+		mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		exit(EXIT_SUCCESS);
+	}
+	if (data->keyboard[KEY_C])
+	{
+		data->ind += 1;
+		if (data->ind > 9)
+			data->ind = 0;
+		data->keyboard[KEY_C] = 0;
+	}
+	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
 	if (data->keyboard[KEY_PAD_SUB])
 		if (data->zoom > 0.4)
 			data->zoom /= 1.1;
