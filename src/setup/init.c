@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdr/fractol.h"
+#include "../../hdr/fractol.h"
 
 void	init_img(t_data *data)
 {
@@ -27,22 +27,31 @@ void	init_data(t_data *data)
 	data->xoff = 0;
 	data->yoff = 0;
 	data->ind = 0;
-	data->color[0] = 0xffffff;
-	data->color[1] = 0xE6E6FA;
-	data->color[2] = 0xff0000;
-	data->color[3] = 0xFFFAFA;
-	data->color[4] = 0x808000;
-	data->color[5] = 0xD2691E;
-	data->color[6] = 0x696969;
-	data->color[7] = 0x708090;
-	data->color[8] = 0xFFDAB9;
-	data->color[9] = 0xF4A460;
+}
+
+void	init_seirp(t_data *data)
+{
+	data->max_iter = 1;
+	data->xoff = 0;
+	data->yoff = 0;
+	data->slength = 400;
 }
 
 void	init(t_data *data)
 {
+	data->color[0] = 0xffffff;
+	data->color[1] = 0xff0000;
+	data->color[2] = 0x00ff00;
+	data->color[3] = 0xff;
+	data->color[4] = 0xffff00;
+	data->color[5] = 0x00ffff;
+	data->color[6] = 0xff00ff;
+	data->color[7] = 0x009933;
+	data->color[8] = 0xff6600;
+	data->color[9] = 0xff66cc;
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "fractol");
+
 	init_data(data);
 	init_img(data);
 }

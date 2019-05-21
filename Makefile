@@ -29,22 +29,29 @@ MAGENTA= \033[35m
 NAME= fractol
 CC= gcc
 CFLAGS= -Wall -Wextra -Werror 
-FRAMEWORK=  -framework OpenGL -framework AppKit
+FRAMEWORK= -framework OpenGL -framework AppKit
 SRC_DIR= src/
-SRC= main.c\
-	 parsing.c\
-	 init.c\
-	 mandelbrot_set.c\
-	 print_fract.c\
-	 key_handler.c\
-	 threads.c\
-	 julia_set.c\
-	 mandelbar_set.c\
-	 burning_ship_set.c\
-	 newton_fractal.c
+SRC= setup/main.c\
+	 setup/parsing.c\
+	 setup/threads.c\
+	 setup/init.c\
+	 draw/put_pixel.c\
+	 draw/bressenham.c\
+	 fractals/sierpinski_triangle.c\
+	 fractals/mandelbrot_set.c\
+	 fractals/burning_ship_set.c\
+	 fractals/mandelbar_set.c\
+	 fractals/julia_set.c\
+	 fractals/barnsley_fern.c\
+	 key/deal_key.c\
+	 key/key_handler.c\
+	 key/deal_key_sierpinski.c
 SRCS= $(addprefix $(SRC_DIR),$(SRC))
 OBJ_DIR= obj/
-OBJ= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+OBJ= $(SRC:.c=.o)
+OBJ_SUBDIRS= fractals key draw setup
+OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
+SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= -L /usr/local/lib -lmlx\
 	 -L libft -lft
 INCLUDES=	hdr/fractol.h\
@@ -56,22 +63,22 @@ INCLUDES=	hdr/fractol.h\
 #								Rules										  #
 ###############################################################################
 
-all: $(NAME)
+all: $(SUBDIRS) $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJS)
 	@ echo "$(BLUE)Creating libft$(WHITE)"
 	@ make -C libft
 	@ echo "$(GREEN)Libft created$(WHITE)"
 	@ echo "$(YELLOW)Creating $@ executable$(WHITE)"
-	@ $(CC) -o $@ $(CFLAGS) $(OBJ) $(LIB) $(FRAMEWORK)
+	@ $(CC) -o $@ $(CFLAGS) $(OBJS) $(LIB) $(FRAMEWORK)
 	@echo "$(GREEN)$@ executable created$(WHITE)"
 
-obj:
-	@mkdir obj
+$(SUBDIRS):
+	 mkdir -p $(SUBDIRS)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES) Makefile|obj
-	@ $(CC) -o $@ -c $< $(CFLAGS)
-	@ echo "$(GREEN)[✔]$(WHITE)$@"
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES) Makefile
+	 $(CC) -o $@ -c $< $(CFLAGS)
+	 echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
 	@ echo "$(YELLOW)Deleting objects$(WHITE)"

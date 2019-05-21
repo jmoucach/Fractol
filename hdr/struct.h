@@ -21,6 +21,12 @@ typedef struct s_cpx
 	double		y;
 }				t_cpx;
 
+typedef struct s_pos
+{
+	int			x;
+	int			y;
+}				t_pos;
+
 typedef struct s_img
 {
 	void		*img_ptr;
@@ -29,6 +35,17 @@ typedef struct s_img
 	int			endian;
 	int			sl;
 }				t_img;
+
+typedef struct	s_line
+{
+	int			error;
+	int			offset;
+	int			sign_y;
+	int			sign_x;
+	int			delta_y;
+	int			delta_x;
+}				t_line;
+
 
 typedef struct s_data
 {
@@ -42,6 +59,7 @@ typedef struct s_data
 	int			ind;
 	double		xoff;
 	double		yoff;
+	int			slength;
 	t_img		img;
 	pthread_t	th[THREADS];
 }				t_data;

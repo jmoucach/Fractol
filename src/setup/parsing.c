@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdr/fractol.h"
+#include "../../hdr/fractol.h"
 void parser(char *str, t_data *data)
 {
 	if (ft_strequ(str, "julia") || ft_strequ(str, "Julia"))
@@ -21,11 +21,11 @@ void parser(char *str, t_data *data)
 		data->fract = 2;
 	else if (ft_strequ(str, "burning_ship") || ft_strequ(str, "Burning_ship"))
 		data->fract = 3;
-	else if (ft_strequ(str, "newton") || ft_strequ(str, "Newton"))
+	else if (ft_strequ(str, "sierpinski") || ft_strequ(str, "Sierpinski"))
 		data->fract = 4;
 	else
 	{
-		ft_putendl("Aviable fractals are: Julia / Mandelbrot / Mandelbar / Burning ship");
+		ft_putendl("Aviable fractals are: Julia / Mandelbrot / Mandelbar / Burning ship / Sierpinski");
 		exit(EXIT_FAILURE);
 	}
 }

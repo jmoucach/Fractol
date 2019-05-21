@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdr/fractol.h"
+#include "../../hdr/fractol.h"
 
 int		is_inside_window(int x, int y)
 {

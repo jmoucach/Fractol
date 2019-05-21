@@ -10,55 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdr/fractol.h"
-
-int		deal_key(void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	if (data->keyboard[KEY_ESCAPE])
-	{
-		ft_putendl("Exit");
-		mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		exit(EXIT_SUCCESS);
-	}
-	if (data->keyboard[KEY_PAD_SUB])
-		if (data->zoom > 0.4)
-			data->zoom /= 1.1;
-	if (data->keyboard[KEY_PAD_ADD])
-		data->zoom *= 1.1;
-	if (data->keyboard[KEY_PAGE_UP])
-		data->max_iter += 1;
-	if (data->keyboard[KEY_PAGE_DOWN])
-		if (data->max_iter > 10)
-			data->max_iter -= 1;
-	if (data->keyboard[KEY_W])
-		data->yoff += 0.05 / data->zoom;
-	if (data->keyboard[KEY_S])
-		data->yoff -= 0.05 / data->zoom;
-	if (data->keyboard[KEY_D])
-		data->xoff -= 0.05 / data->zoom;
-	if (data->keyboard[KEY_A])
-		data->xoff += 0.05 / data->zoom;
-	if (data->keyboard[KEY_C])
-	{
-		data->ind += 1;
-		if (data->ind > 9)
-			data->ind = 0;
-		data->keyboard[KEY_C] = 0;
-	}
-	if (data->keyboard[KEY_SPACEBAR])
-	{
-		init_data(data);
-	}
-	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-		ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
-		threads(data);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
-	return (1);
-}
+#include "../../hdr/fractol.h"
 
 int mouse_press(int button, int x, int y, void *param)
 {
@@ -74,10 +26,13 @@ int mouse_press(int button, int x, int y, void *param)
 		data->yoff -= (0.05 / data->zoom) * ((WIN_HEIGHT / 2 - y) / 64);
 	}
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-		ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
+	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
+	if (data->fract != 4)
 		threads(data);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
-		return (1);
+	else
+		sierpinski_triangle(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
+	return (1);
 }
 
 int		key_press(int key, void *param)

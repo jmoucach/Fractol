@@ -19,7 +19,7 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 800
-# define THREADS 32
+# define THREADS 16
 
 # include "../libft/libft.h"
 # include "struct.h"

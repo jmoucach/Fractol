@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   burning_ship_set.c                                 :+:      :+:    :+:   */
+/*   mandelbrot_set.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 13:12:58 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/05/17 13:13:00 by jmoucach         ###   ########.fr       */
+/*   Created: 2019/05/10 09:51:00 by jmoucach          #+#    #+#             */
+/*   Updated: 2019/05/10 10:28:09 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdr/fractol.h"
+#include "../../hdr/fractol.h"
 
-static	int iterate(t_data *data, double x, double y)
+static int	iterate(t_data *data, double x, double y)
 {
-	int i;
-	t_cpx	new;
+	t_cpx new;
 	double tmp;
+	int i;
 
 	new.x = x;
 	new.y = y;
@@ -24,23 +24,31 @@ static	int iterate(t_data *data, double x, double y)
 	while (new.x * new.x + new.y * new.y < 4 && i < data->max_iter)
 	{
 		tmp = new.x;
-		new.x = ft_abs(new.x * new.x - new.y * new.y + x);
-		new.y = ft_abs(2.0 * tmp * new.y) + y;
+		new.x = new.x * new.x - new.y * new.y + x;
+		new.y = 2.0 * tmp * new.y + y;
 		i++;
 	}
 	return (i);
 }
 
-void	burning_ship_set(t_data *data, int th)
+void	give_value(t_data *data, t_cpx *pt, int x, int y)
 {
-	t_cpx	cur;
-	int		limit;
-	int		i;
+	pt->y = (y - WIN_HEIGHT / 2.0) / (0.5 * data->zoom * WIN_HEIGHT)
+		+ data->yoff;
+	pt->x = 1.5 * (x - WIN_HEIGHT / 2.0) / (0.5 * data->zoom * WIN_HEIGHT)
+		+ data->xoff;
+}
+
+void	mandelbrot_set(t_data *data, int th)
+{
+	t_cpx cur;
 	t_cpx	pt;
+	int limit;
+	int i;
 	int color;
 
-	cur.y = th * 50;
 	limit = (th + 1) * 50;
+	cur.y = th * 50;
 	while (cur.y < limit)
 	{
 		cur.x = 0;

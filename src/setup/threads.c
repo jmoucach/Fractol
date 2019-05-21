@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../hdr/fractol.h"
+# include "../../hdr/fractol.h"
 
 void	selector(t_data *data)
 {
-	static void (*fract[5])(t_data*, int) = {julia_set, mandelbrot_set,
-		mandelbar_set, burning_ship_set, newton_fractal};
+	static void (*fract[4])(t_data*, int) = {julia_set, mandelbrot_set,
+		mandelbar_set, burning_ship_set};
 	pthread_t s;
 	int i;
 

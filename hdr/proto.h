@@ -26,16 +26,23 @@ void parser(char *str, t_data *data);
 ** Init
 */
 
-void init(t_data *data);
+void	init(t_data *data);
 void	init_data(t_data *data);
-void init_img(t_data *data);
+void	init_seirp(t_data *data);
+void	init_img(t_data *data);
+
+/*
+** Bressenham
+*/
+
+void		draw_line(t_pos a, t_pos b, t_data *data);
 
 /*
 ** Print_fract
 */
 
+int		is_inside_window(int x, int y);
 void	put_pixel(t_data *data, int x, int y, int color);
-void	print_fract(t_data *data);
 
 /*
 ** Mandelbrot
@@ -63,19 +70,36 @@ void	mandelbar_set(t_data *data, int th);
 void	burning_ship_set(t_data *data, int th);
 
 /*
-** Newton
+** Sierpinski triangle
 */
 
-void	newton_fractal(t_data *data, int th);
+void	sierpinski_triangle(t_data *data);
+
+/*
+** Barnsley fern
+*/
+
+void	barnsley_fern(t_data *data);
 
 /*
 ** Key handler
 */
 
 int		key_release(int key, void *param);
-int		deal_key(void *param);
 int		key_press(int key, void *param);
 int mouse_press(int button, int x, int y, void *param);
+
+/*
+** Deal-key
+*/
+
+int		deal_key(void *param);
+
+/*
+** Deal-key(Sierpinksi)
+*/
+
+void	deal_key_sierpinski(t_data *data);
 
 /*
 ** Threads

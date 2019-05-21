@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbar_set.c                                    :+:      :+:    :+:   */
+/*   burning_ship_set.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 12:47:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/05/17 12:47:30 by jmoucach         ###   ########.fr       */
+/*   Created: 2019/05/17 13:12:58 by jmoucach          #+#    #+#             */
+/*   Updated: 2019/05/17 13:13:00 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdr/fractol.h"
+#include "../../hdr/fractol.h"
 
 static	int iterate(t_data *data, double x, double y)
 {
@@ -24,14 +24,14 @@ static	int iterate(t_data *data, double x, double y)
 	while (new.x * new.x + new.y * new.y < 4 && i < data->max_iter)
 	{
 		tmp = new.x;
-		new.x = new.x * new.x - new.y * new.y + x;
-		new.y = -2.0 * tmp * new.y + y;
+		new.x = ft_abs(new.x * new.x - new.y * new.y + x);
+		new.y = ft_abs(2.0 * tmp * new.y) + y;
 		i++;
 	}
 	return (i);
 }
 
-void	mandelbar_set(t_data *data, int th)
+void	burning_ship_set(t_data *data, int th)
 {
 	t_cpx	cur;
 	int		limit;
