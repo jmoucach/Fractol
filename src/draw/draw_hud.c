@@ -59,10 +59,10 @@ void			draw_line_hud(t_pos a, t_pos b, t_data *data, int color)
 	put_pixel_hud(data, p.x, p.y, color);
 }
 
-void		box(t_pos	p1, t_pos p2, t_data *data)
+void			box(t_pos p1, t_pos p2, t_data *data)
 {
-	t_pos	p3;
-	t_pos	p4;
+	t_pos		p3;
+	t_pos		p4;
 
 	p3.x = p1.x;
 	p3.y = p2.y;

@@ -51,7 +51,7 @@ typedef struct	s_info
 	char		max_iter[32];
 	char		x_off[32];
 	char		y_off[32];
-	char		zoom[32];
+	char		zoom[64];
 	char		cst_x[32];
 	char		cst_y[32];
 }				t_info;

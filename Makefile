@@ -28,7 +28,7 @@ MAGENTA= \033[35m
 ################################################################################
 NAME= fractol
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror -g3 -fsanitize=thread
+CFLAGS= -Wall -Wextra -Werror
 FRAMEWORK= -framework OpenGL -framework AppKit
 SRC_DIR= src/
 SRC= setup/main.c\
