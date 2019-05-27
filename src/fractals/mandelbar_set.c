@@ -12,11 +12,11 @@
 
 #include "../../hdr/fractol.h"
 
-static	int iterate(t_data *data, double x, double y)
+static int	iterate(t_data *data, double x, double y)
 {
-	int i;
+	int		i;
 	t_cpx	new;
-	double tmp;
+	double	tmp;
 
 	new.x = x;
 	new.y = y;
@@ -31,13 +31,13 @@ static	int iterate(t_data *data, double x, double y)
 	return (i);
 }
 
-void	mandelbar_set(t_data *data, int th)
+void		mandelbar_set(t_data *data, int th)
 {
 	t_cpx	cur;
 	int		limit;
 	int		i;
 	t_cpx	pt;
-	int color;
+	int		color;
 
 	cur.y = th * 50;
 	limit = (th + 1) * 50;

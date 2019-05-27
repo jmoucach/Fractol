@@ -16,8 +16,9 @@
 # include <mlx.h>
 # include <math.h>
 # include <pthread.h>
+# include <stdio.h>
 
-# define WIN_WIDTH 800
+# define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
 # define THREADS 16
 
@@ -26,4 +27,4 @@
 # include "proto.h"
 # include "keycode.h"
 
-# endif
+#endif

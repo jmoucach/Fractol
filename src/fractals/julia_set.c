@@ -10,37 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../hdr/fractol.h"
+#include "../../hdr/fractol.h"
 
 static int	iterate(t_data *data, double x, double y)
 {
-	t_cpx new;
-	double tmp;
-	int i;
-	t_cpx	c;
+	t_cpx	new;
+	double	tmp;
+	int		i;
 
 	new.x = x;
-	c.x = -0.8;
-	c.y = 0.156;
 	new.y = y;
 	i = 0;
 	while (new.x * new.x + new.y * new.y < 4 && i < data->max_iter)
 	{
 		tmp = new.x;
-		new.x = new.x * new.x - new.y * new.y + c.x;
-		new.y = 2.0 * tmp * new.y + c.y;
+		new.x = new.x * new.x - new.y * new.y + data->cst.x;
+		new.y = 2.0 * tmp * new.y + data->cst.y;
 		i++;
 	}
 	return (i);
 }
 
-void	julia_set(t_data *data, int th)
+void		julia_set(t_data *data, int th)
 {
 	t_cpx	cur;
 	t_cpx	pt;
-	int i;
-	int limit;
-	int color;
+	int		i;
+	int		limit;
+	int		color;
 
 	limit = (th + 1) * 50;
 	cur.y = th * 50;

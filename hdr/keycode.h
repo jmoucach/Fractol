@@ -136,6 +136,7 @@
 # define KEYPRESS           2
 # define KEYRELEASE         3
 # define MOUSEPRESS			4
+# define MOUSE_MVT			6
 
 # define LEFTPRESS          1
 # define RIGHTPRESS         2

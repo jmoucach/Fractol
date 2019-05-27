@@ -14,16 +14,19 @@
 
 void	init_img(t_data *data)
 {
-	data->img.img_ptr = mlx_new_image(data->mlx_ptr, WIN_WIDTH,
+	data->img.img_ptr = mlx_new_image(data->mlx_ptr, WIN_HEIGHT,
 		WIN_HEIGHT);
 	data->img.img_str = (int*)mlx_get_data_addr(data->img.img_ptr,
 		&(data->img.bpp), &(data->img.sl), &(data->img.endian));
+	create_hud_img(data);
 }
 
 void	init_data(t_data *data)
 {
 	data->zoom = 1;
 	data->max_iter = 16;
+	data->cst.x = -0.8;
+	data->cst.y = 0.156;
 	data->xoff = 0;
 	data->yoff = 0;
 	data->ind = 0;
@@ -34,6 +37,7 @@ void	init_seirp(t_data *data)
 	data->max_iter = 1;
 	data->xoff = 0;
 	data->yoff = 0;
+	data->permit = 0;
 	data->slength = 400;
 }
 
@@ -50,8 +54,8 @@ void	init(t_data *data)
 	data->color[8] = 0xff6600;
 	data->color[9] = 0xff66cc;
 	data->mlx_ptr = mlx_init();
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "fractol");
-
+	data->win_ptr = mlx_new_window(data->mlx_ptr,
+		WIN_WIDTH, WIN_HEIGHT, "fractol");
 	init_data(data);
 	init_img(data);
 }

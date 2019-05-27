@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_fract.c                                      :+:      :+:    :+:   */
+/*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 20:11:54 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/05/08 20:11:58 by jmoucach         ###   ########.fr       */
+/*   Created: 2019/05/23 08:46:24 by jmoucach          #+#    #+#             */
+/*   Updated: 2019/05/23 08:46:26 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/fractol.h"
 
-int		is_inside_window(int x, int y)
+static t_cpx	map(int x, int y)
 {
-	if (x > (WIN_HEIGHT) - 1 || x < 0
-		|| y < 0 || y >= WIN_HEIGHT)
-		return (0);
-	return (1);
+	t_cpx		pt;
+
+	pt.x = (-1.0 - 1.0) / (-WIN_HEIGHT) * (x - 0) - 1.0;
+	pt.y = (-1.0 - 1.0) / (-WIN_HEIGHT) * (y - 0) - 1.0;
+	return (pt);
 }
 
-void	put_pixel(t_data *data, int x, int y, int color)
+int				mouse_move(int x, int y, void *param)
 {
-	int index;
+	t_data		*data;
 
-	index = x + y * WIN_HEIGHT;
-	if (is_inside_window(x, y))
-		data->img.img_str[index] = color;
+	data = (t_data *)param;
+	if (data->permit == 1)
+		data->cst = map(x, y);
+	return (1);
 }

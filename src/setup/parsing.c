@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "../../hdr/fractol.h"
-void parser(char *str, t_data *data)
+
+void	parser(char *str, t_data *data)
 {
 	if (ft_strequ(str, "julia") || ft_strequ(str, "Julia"))
 		data->fract = 0;

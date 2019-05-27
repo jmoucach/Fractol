@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../hdr/fractol.h"
+#include "../../hdr/fractol.h"
 
-void	selector(t_data *data)
+void			selector(t_data *data)
 {
-	static void (*fract[4])(t_data*, int) = {julia_set, mandelbrot_set,
-		mandelbar_set, burning_ship_set};
-	pthread_t s;
-	int i;
+	static void	(*fract[4])(t_data*, int) = {julia_set, mandelbrot_set,
+				mandelbar_set, burning_ship_set};
+	pthread_t	s;
+	int			i;
 
 	i = 0;
 	s = pthread_self();
@@ -27,9 +27,9 @@ void	selector(t_data *data)
 	pthread_exit(NULL);
 }
 
-void	threads(t_data *data)
+void			threads(t_data *data)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	while (i < THREADS)

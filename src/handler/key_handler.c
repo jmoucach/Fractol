@@ -12,7 +12,7 @@
 
 #include "../../hdr/fractol.h"
 
-int mouse_press(int button, int x, int y, void *param)
+int			mouse_press(int button, int x, int y, void *param)
 {
 	t_data	*data;
 	double	old_zoom;
@@ -30,12 +30,13 @@ int mouse_press(int button, int x, int y, void *param)
 		mlx_clear_window(data->mlx_ptr, data->win_ptr);
 		ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
 		threads(data);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img.img_ptr, 0, 0);
 	}
 	return (1);
 }
 
-int		key_press(int key, void *param)
+int			key_press(int key, void *param)
 {
 	t_data	*data;
 
@@ -44,16 +45,17 @@ int		key_press(int key, void *param)
 	return (0);
 }
 
-int		key_release(int key, void *param)
+int			key_release(int key, void *param)
 {
 	t_data	*data;
-		data = (t_data *)param;
-	if (key != KEY_C)
+
+	data = (t_data *)param;
+	if (key != KEY_C && key != KEY_TILDE)
 		data->keyboard[key] = 0;
 	return (0);
 }
 
-int dealer(void *param)
+int			dealer(void *param)
 {
 	t_data	*data;
 

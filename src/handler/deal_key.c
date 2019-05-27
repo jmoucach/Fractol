@@ -12,8 +12,39 @@
 
 #include "../../hdr/fractol.h"
 
-int		deal_key(t_data *data)
+void	deal_key_bis(t_data *data)
 {
+	if (data->keyboard[KEY_PAGE_DOWN])
+		if (data->max_iter > 10)
+			data->max_iter -= 1;
+	if (data->keyboard[KEY_W])
+		data->yoff += 0.05 / data->zoom;
+	if (data->keyboard[KEY_S])
+		data->yoff -= 0.05 / data->zoom;
+	if (data->keyboard[KEY_D])
+		data->xoff -= 0.05 / data->zoom;
+	if (data->keyboard[KEY_A])
+		data->xoff += 0.05 / data->zoom;
+	if (data->keyboard[KEY_TILDE] && data->fract == 0)
+	{
+		if (data->permit == 0)
+			data->permit = 1;
+		else
+			data->permit = 0;
+		data->keyboard[KEY_TILDE] = 0;
+	}
+	if (data->keyboard[KEY_SPACEBAR])
+	{
+		init_data(data);
+	}
+	if (data->keyboard[KEY_PAGE_UP])
+		data->max_iter += 1;
+}
+
+void	deal_key(t_data *data)
+{
+	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
 	if (data->keyboard[KEY_ESCAPE])
 	{
 		ft_putendl("Exit");
@@ -28,33 +59,13 @@ int		deal_key(t_data *data)
 			data->ind = 0;
 		data->keyboard[KEY_C] = 0;
 	}
-	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
-
-		if (data->keyboard[KEY_PAD_SUB])
-			if (data->zoom > 0.4)
-				data->zoom /= 1.1;
-		if (data->keyboard[KEY_PAD_ADD])
-			data->zoom *= 1.1;
-		if (data->keyboard[KEY_PAGE_UP])
-			data->max_iter += 1;
-		if (data->keyboard[KEY_PAGE_DOWN])
-			if (data->max_iter > 10)
-				data->max_iter -= 1;
-		if (data->keyboard[KEY_W])
-			data->yoff += 0.05 / data->zoom;
-		if (data->keyboard[KEY_S])
-			data->yoff -= 0.05 / data->zoom;
-		if (data->keyboard[KEY_D])
-			data->xoff -= 0.05 / data->zoom;
-		if (data->keyboard[KEY_A])
-			data->xoff += 0.05 / data->zoom;
-		
-		if (data->keyboard[KEY_SPACEBAR])
-		{
-			init_data(data);
-		}
-		threads(data);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
-	return (1);
+	if (data->keyboard[KEY_PAD_SUB] && data->zoom > 0.4)
+		data->zoom /= 1.1;
+	if (data->keyboard[KEY_PAD_ADD])
+		data->zoom *= 1.1;
+	deal_key_bis(data);
+	threads(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->img.img_ptr, 0, 0);
+	call_hud(data);
 }

@@ -15,12 +15,18 @@
 
 # include "fractol.h"
 
-
 /*
 ** Parsing
 */
 
-void parser(char *str, t_data *data);
+void	parser(char *str, t_data *data);
+
+/*
+** Main
+*/
+
+void	first_choose(t_data *data);
+void	ft_mlx(t_data *data);
 
 /*
 ** Init
@@ -35,7 +41,8 @@ void	init_img(t_data *data);
 ** Bressenham
 */
 
-void		draw_line(t_pos a, t_pos b, t_data *data);
+t_line	setup_params(t_pos a, t_pos b);
+void	draw_line(t_pos a, t_pos b, t_data *data, int color);
 
 /*
 ** Print_fract
@@ -94,13 +101,41 @@ int		mouse_press(int button, int x, int y, void *param);
 ** Deal-key
 */
 
-int		deal_key(t_data *data);
+void	deal_key_bis(t_data *data);
+void	deal_key(t_data *data);
 
 /*
 ** Deal-key(Sierpinksi)
 */
 
+void	deal_key_sierpinski_bis(t_data *data);
 void	deal_key_sierpinski(t_data *data);
+
+/*
+** Mouse move
+*/
+
+int		mouse_move(int x, int y, void *param);
+
+/*
+** Hud
+*/
+
+void	create_hud_img(t_data *data);
+void	call_hud(t_data *data);
+
+/*
+** Draw (HUD)
+*/
+
+void	box(t_pos	p1, t_pos p2, t_data *data);
+void	color_hud(t_data *data);
+
+/*
+** Info
+*/
+
+void	generate_info(t_info *i, t_data *data);
 
 /*
 ** Threads

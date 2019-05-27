@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../hdr/fractol.h"
-#include <stdio.h>//
-
 
 t_pos	find_mid(t_pos p1, t_pos p2)
 {
@@ -25,13 +23,13 @@ t_pos	find_mid(t_pos p1, t_pos p2)
 
 void	draw_triangle(t_data *data, t_pos pos[3])
 {
-	draw_line(pos[0], pos[1], data);
-	draw_line(pos[1], pos[2], data);
-	draw_line(pos[2], pos[0], data);
+	draw_line(pos[0], pos[1], data, data->color[data->ind]);
+	draw_line(pos[1], pos[2], data, data->color[data->ind]);
+	draw_line(pos[2], pos[0], data, data->color[data->ind]);
 }
 
 void	divide(t_data *data, t_pos pos[3], int level)
-{ 
+{
 	if (level == 1)
 		draw_triangle(data, pos);
 	else
@@ -48,8 +46,9 @@ void	divide(t_data *data, t_pos pos[3], int level)
 void	sierpinski_triangle(t_data *data)
 {
 	t_pos	pos[3];
-	int		len = data->slength;
+	int		len;
 
+	len = data->slength;
 	pos[0].x = 200 - data->xoff;
 	pos[0].y = 2 * WIN_HEIGHT / 3 - data->yoff;
 	pos[1].x = pos[0].x + data->slength;

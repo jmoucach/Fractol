@@ -14,9 +14,9 @@
 
 static int	iterate(t_data *data, double x, double y)
 {
-	t_cpx new;
-	double tmp;
-	int i;
+	t_cpx	new;
+	double	tmp;
+	int		i;
 
 	new.x = x;
 	new.y = y;
@@ -31,7 +31,7 @@ static int	iterate(t_data *data, double x, double y)
 	return (i);
 }
 
-void	give_value(t_data *data, t_cpx *pt, int x, int y)
+void		give_value(t_data *data, t_cpx *pt, int x, int y)
 {
 	pt->y = (y - WIN_HEIGHT / 2.0) / (0.5 * data->zoom * WIN_HEIGHT)
 		+ data->yoff;
@@ -39,13 +39,13 @@ void	give_value(t_data *data, t_cpx *pt, int x, int y)
 		+ data->xoff;
 }
 
-void	mandelbrot_set(t_data *data, int th)
+void		mandelbrot_set(t_data *data, int th)
 {
-	t_cpx cur;
+	t_cpx	cur;
 	t_cpx	pt;
-	int limit;
-	int i;
-	int color;
+	int		limit;
+	int		i;
+	int		color;
 
 	limit = (th + 1) * 50;
 	cur.y = th * 50;

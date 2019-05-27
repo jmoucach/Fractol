@@ -13,9 +13,9 @@
 #include "../../hdr/fractol.h"
 #include <stdio.h>
 
-static t_line	setup_params(t_pos a, t_pos b)
+t_line			setup_params(t_pos a, t_pos b)
 {
-	t_line	params;
+	t_line		params;
 
 	params.sign_y = (a.y < b.y ? 1 : -1);
 	params.sign_x = (a.x < b.x ? 1 : -1);
@@ -26,16 +26,16 @@ static t_line	setup_params(t_pos a, t_pos b)
 	return (params);
 }
 
-void		draw_line(t_pos a, t_pos b, t_data *data)
+void			draw_line(t_pos a, t_pos b, t_data *data, int color)
 {
-	t_line	params;
-	t_pos	p;
+	t_line		params;
+	t_pos		p;
 
 	params = setup_params(a, b);
 	p = a;
 	while (p.y != b.y || p.x != b.x)
 	{
-		put_pixel(data, p.x, p.y, data->color[data->ind]);
+		put_pixel(data, p.x, p.y, color);
 		if ((params.error = params.offset * 2) > -params.delta_y)
 		{
 			params.offset -= params.delta_y;
@@ -47,5 +47,5 @@ void		draw_line(t_pos a, t_pos b, t_data *data)
 			p.y += params.sign_y;
 		}
 	}
-	put_pixel(data, p.x, p.y, data->color[data->ind]);
+	put_pixel(data, p.x, p.y, color);
 }

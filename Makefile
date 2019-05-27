@@ -28,7 +28,7 @@ MAGENTA= \033[35m
 ################################################################################
 NAME= fractol
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror 
+CFLAGS= -Wall -Wextra -Werror -g3 -fsanitize=thread
 FRAMEWORK= -framework OpenGL -framework AppKit
 SRC_DIR= src/
 SRC= setup/main.c\
@@ -37,19 +37,23 @@ SRC= setup/main.c\
 	 setup/init.c\
 	 draw/put_pixel.c\
 	 draw/bressenham.c\
+	 draw/draw_hud.c\
 	 fractals/sierpinski_triangle.c\
 	 fractals/mandelbrot_set.c\
 	 fractals/burning_ship_set.c\
 	 fractals/mandelbar_set.c\
 	 fractals/julia_set.c\
 	 fractals/barnsley_fern.c\
-	 key/deal_key.c\
-	 key/key_handler.c\
-	 key/deal_key_sierpinski.c
+	 handler/deal_key.c\
+	 handler/key_handler.c\
+	 handler/deal_key_sierpinski.c\
+	 handler/mouse_move.c\
+	 hud/hud.c\
+	 hud/info.c
 SRCS= $(addprefix $(SRC_DIR),$(SRC))
 OBJ_DIR= obj/
 OBJ= $(SRC:.c=.o)
-OBJ_SUBDIRS= fractals key draw setup
+OBJ_SUBDIRS= fractals handler draw setup hud
 OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= -L /usr/local/lib -lmlx\
