@@ -49,11 +49,11 @@ void	sierpinski_triangle(t_data *data)
 	int		len;
 
 	len = data->slength;
-	pos[0].x = 200 - data->xoff;
-	pos[0].y = 2 * WIN_HEIGHT / 3 - data->yoff;
-	pos[1].x = pos[0].x + data->slength;
-	pos[1].y = pos[0].y;
-	pos[2].x = (pos[0].x + pos[1].x) / 2;
-	pos[2].y = pos[0].x - sqrt(len * len - pos[2].x * pos[2].x);
+	pos[0].x = 200 + data->xoff;
+	pos[0].y = 540 + data->yoff;
+	pos[1].x = 600 + data->xoff;
+	pos[1].y = 540 + data->yoff;
+	pos[2].x = 400 + data->xoff;
+	pos[2].y = cos(M_PI / 3) * len + data->yoff;
 	divide(data, pos, data->max_iter);
 }

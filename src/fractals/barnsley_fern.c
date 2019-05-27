@@ -58,7 +58,7 @@ void			barnsley_fern(t_data *data)
 	pt.x = 0;
 	pt.y = 0;
 	i = 0;
-	while (i < 10000000)
+	while (i < data->max_iter)
 	{
 		next_point(&pt);
 		out = map(pt);

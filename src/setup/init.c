@@ -24,7 +24,7 @@ void	init_img(t_data *data)
 void	init_data(t_data *data)
 {
 	data->zoom = 1;
-	data->max_iter = 16;
+	data->max_iter = 15;
 	data->cst.x = -0.8;
 	data->cst.y = 0.156;
 	data->xoff = 0;

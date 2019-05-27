@@ -16,7 +16,7 @@ void	deal_key_bis(t_data *data)
 {
 	if (data->keyboard[KEY_PAGE_DOWN])
 		if (data->max_iter > 10)
-			data->max_iter -= 5;
+			data->max_iter -= 2;
 	if (data->keyboard[KEY_W])
 		data->yoff += 0.05 / data->zoom;
 	if (data->keyboard[KEY_S])
@@ -36,7 +36,7 @@ void	deal_key_bis(t_data *data)
 	if (data->keyboard[KEY_SPACEBAR])
 		init_data(data);
 	if (data->keyboard[KEY_PAGE_UP])
-		data->max_iter += 5;
+		data->max_iter += 2;
 }
 
 void	deal_key(t_data *data)

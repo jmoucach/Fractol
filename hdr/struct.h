@@ -48,6 +48,7 @@ typedef struct	s_line
 
 typedef struct	s_info
 {
+	char		fract[32];
 	char		max_iter[32];
 	char		x_off[32];
 	char		y_off[32];

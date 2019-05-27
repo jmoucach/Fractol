@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deal_key_sierpinski.c                              :+:      :+:    :+:   */
+/*   deal_key_fern.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 10:43:51 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/05/21 10:43:52 by jmoucach         ###   ########.fr       */
+/*   Created: 2019/05/27 14:32:13 by jmoucach          #+#    #+#             */
+/*   Updated: 2019/05/27 14:32:14 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/fractol.h"
 
-void	deal_key_sierpinski_bis(t_data *data)
-{
-	if (data->keyboard[KEY_PAGE_UP])
-		data->max_iter += 1;
-	if (data->keyboard[KEY_PAGE_DOWN])
-		if (data->max_iter > 1)
-			data->max_iter -= 1;
-	if (data->keyboard[KEY_SPACEBAR])
-		init_seirp(data);
-	if (data->keyboard[KEY_W])
-		data->yoff -= 5;
-	if (data->keyboard[KEY_S])
-		data->yoff += 5;
-	if (data->keyboard[KEY_D])
-		data->xoff += 5;
-	if (data->keyboard[KEY_A])
-		data->xoff -= 5;
-}
-
-void	deal_key_sierpinski(t_data *data)
+void	deal_key_fern(t_data *data)
 {
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
@@ -42,15 +23,12 @@ void	deal_key_sierpinski(t_data *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		exit(EXIT_SUCCESS);
 	}
-	if (data->keyboard[KEY_C])
-	{
-		data->ind += 1;
-		if (data->ind > 9)
-			data->ind = 0;
-		data->keyboard[KEY_C] = 0;
-	}
-	deal_key_sierpinski_bis(data);
-	sierpinski_triangle(data);
+	if (data->keyboard[KEY_PAGE_UP])
+		data->max_iter *= 2;
+	if (data->keyboard[KEY_PAGE_DOWN])
+		if (data->max_iter >= 2)
+			data->max_iter /= 2;
+	barnsley_fern(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.img_ptr, 0, 0);
 	call_hud(data);

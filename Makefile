@@ -47,6 +47,7 @@ SRC= setup/main.c\
 	 handler/deal_key.c\
 	 handler/key_handler.c\
 	 handler/deal_key_sierpinski.c\
+	 handler/deal_key_fern.c\
 	 handler/mouse_move.c\
 	 hud/hud.c\
 	 hud/info.c
@@ -87,7 +88,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES) Makefile
 clean:
 	@ echo "$(YELLOW)Deleting objects$(WHITE)"
 	@ for i in $(OBJ); do \
-		echo "$(RED)-Deleting $$i$(WHITE)"; \
+		echo "$(RED)- Deleting $$i$(WHITE)"; \
 	done;
 	@ echo "$(GREEN)Objects deleted$(WHITE)"
 	@ rm -rf $(OBJ)
@@ -102,3 +103,5 @@ fclean: clean
 	@ rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all re fclean clean

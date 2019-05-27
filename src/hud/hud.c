@@ -38,10 +38,11 @@ void		call_hud(t_data *data)
 	generate_info(&i, data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->hud.img_ptr, 800, 0);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 25, 0xffffff, i.max_iter);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 45, 0xffffff, i.zoom);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 65, 0xffffff, i.x_off);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 85, 0xffffff, i.y_off);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 105, 0xffffff, i.cst_x);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 125, 0xffffff, i.cst_y);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 930, 25, 0xffffff, i.fract);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 65, 0xffffff, i.max_iter);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 85, 0xffffff, i.zoom);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 105, 0xffffff, i.x_off);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 125, 0xffffff, i.y_off);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 145, 0xffffff, i.cst_x);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 165, 0xffffff, i.cst_y);
 }

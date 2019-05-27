@@ -63,6 +63,8 @@ void			box(t_pos p1, t_pos p2, t_data *data)
 {
 	t_pos		p3;
 	t_pos		p4;
+	t_pos		p5;
+	t_pos		p6;
 
 	p3.x = p1.x;
 	p3.y = p2.y;
@@ -72,4 +74,12 @@ void			box(t_pos p1, t_pos p2, t_data *data)
 	draw_line_hud(p1, p4, data, 0xffffff);
 	draw_line_hud(p2, p3, data, 0xffffff);
 	draw_line_hud(p2, p4, data, 0xffffff);
+	p5.x = 10;
+	p5.y = 55;
+	p6.x = 390;
+	p6.y = 55;
+	draw_line_hud(p5, p6, data, 0xffffff);
+	p5.y = 190;
+	p6.y = 190;
+	draw_line_hud(p5, p6, data, 0xffffff);
 }

@@ -64,5 +64,7 @@ int			dealer(void *param)
 		deal_key(data);
 	else if (data->fract == 4)
 		deal_key_sierpinski(data);
+	else if (data->fract == 5)
+		deal_key_fern(data);
 	return (1);
 }

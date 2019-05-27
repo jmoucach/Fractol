@@ -112,6 +112,12 @@ void	deal_key_sierpinski_bis(t_data *data);
 void	deal_key_sierpinski(t_data *data);
 
 /*
+** Deal-key(Fern)
+*/
+
+void	deal_key_fern(t_data *data);
+
+/*
 ** Mouse move
 */
 
@@ -135,6 +141,7 @@ void	color_hud(t_data *data);
 ** Info
 */
 
+void	fractal_name(t_info *i, t_data *data);
 void	generate_info(t_info *i, t_data *data);
 
 /*
