@@ -48,7 +48,7 @@ void		julia_set(t_data *data, int th)
 		{
 			give_value(data, &pt, cur.x, cur.y);
 			i = iterate(data, pt.x, pt.y);
-			color = data->color[data->ind] / data->max_iter * i;
+			color = data->color[data->ind] / (i + 1);
 			if (i == data->max_iter)
 				put_pixel(data, cur.x, cur.y, 0);
 			else

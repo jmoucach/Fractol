@@ -12,11 +12,34 @@
 
 #include "../../hdr/fractol.h"
 
+void	deal_key_ter(t_data *data)
+{
+	if (data->keyboard[KEY_0])
+		data->fract = 0;
+	else if (data->keyboard[KEY_1])
+		data->fract = 1;
+	else if (data->keyboard[KEY_2])
+		data->fract = 2;
+	else if (data->keyboard[KEY_3])
+		data->fract = 3;
+	else if (data->keyboard[KEY_4])
+	{
+		init_seirp(data);
+		data->fract = 4;
+	}
+	else if (data->keyboard[KEY_5])
+	{
+		init_fern(data);
+		data->fract = 5;
+	}
+	deal_key_chooser(data);
+}
+
 void	deal_key_bis(t_data *data)
 {
 	if (data->keyboard[KEY_PAGE_DOWN])
 		if (data->max_iter > 10)
-			data->max_iter -= 2;
+			data->max_iter -= 5;
 	if (data->keyboard[KEY_W])
 		data->yoff += 0.05 / data->zoom;
 	if (data->keyboard[KEY_S])
@@ -36,13 +59,12 @@ void	deal_key_bis(t_data *data)
 	if (data->keyboard[KEY_SPACEBAR])
 		init_data(data);
 	if (data->keyboard[KEY_PAGE_UP])
-		data->max_iter += 2;
+		data->max_iter += 5;
+	deal_key_ter(data);
 }
 
 void	deal_key(t_data *data)
 {
-	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	ft_bzero(data->img.img_str, 4 * WIN_HEIGHT * WIN_WIDTH);
 	if (data->keyboard[KEY_ESCAPE])
 	{
 		ft_putendl("Exit");
@@ -62,8 +84,4 @@ void	deal_key(t_data *data)
 	if (data->keyboard[KEY_PAD_ADD])
 		data->zoom *= 1.1;
 	deal_key_bis(data);
-	threads(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		data->img.img_ptr, 0, 0);
-	call_hud(data);
 }

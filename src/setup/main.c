@@ -28,7 +28,7 @@ void	first_choose(t_data *data)
 		threads(data);
 	else if (data->fract == 5)
 	{
-		data->max_iter = 2048;
+		init_fern(data);
 		barnsley_fern(data);
 	}
 	else if (data->fract == 4)

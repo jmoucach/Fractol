@@ -41,12 +41,20 @@ void	init_seirp(t_data *data)
 	data->slength = 400;
 }
 
+void	init_fern(t_data *data)
+{
+	data->max_iter = 2048;
+	data->xoff = 0;
+	data->yoff = 0;
+	data->permit = 0;
+}
+
 void	init(t_data *data)
 {
 	data->color[0] = 0xffffff;
 	data->color[1] = 0xff0000;
 	data->color[2] = 0x00ff00;
-	data->color[3] = 0xff;
+	data->color[3] = 0xff0f0f;
 	data->color[4] = 0xffff00;
 	data->color[5] = 0x00ffff;
 	data->color[6] = 0xff00ff;

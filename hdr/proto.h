@@ -33,6 +33,7 @@ void	ft_mlx(t_data *data);
 */
 
 void	init(t_data *data);
+void	init_fern(t_data *data);
 void	init_data(t_data *data);
 void	init_seirp(t_data *data);
 void	init_img(t_data *data);
@@ -92,6 +93,7 @@ void	barnsley_fern(t_data *data);
 ** Key handler
 */
 
+void	deal_key_chooser(t_data *data);
 int		key_release(int key, void *param);
 int		key_press(int key, void *param);
 int		dealer(void *param);
@@ -108,6 +110,7 @@ void	deal_key(t_data *data);
 ** Deal-key(Sierpinksi)
 */
 
+void	deal_key_ter(t_data *data);
 void	deal_key_sierpinski_bis(t_data *data);
 void	deal_key_sierpinski(t_data *data);
 
@@ -115,6 +118,7 @@ void	deal_key_sierpinski(t_data *data);
 ** Deal-key(Fern)
 */
 
+void	deal_key_fern_bis(t_data *data);
 void	deal_key_fern(t_data *data);
 
 /*
