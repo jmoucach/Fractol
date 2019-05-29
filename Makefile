@@ -44,11 +44,14 @@ SRC= setup/main.c\
 	 fractals/mandelbar_set.c\
 	 fractals/julia_set.c\
 	 fractals/barnsley_fern.c\
+	 fractals/koch_curve.c\
+	 fractals/sierpinski_carpet.c\
 	 handler/deal_key.c\
 	 handler/key_handler.c\
 	 handler/deal_key_sierpinski.c\
 	 handler/deal_key_fern.c\
 	 handler/mouse_move.c\
+	 handler/deal_key_koch.c\
 	 hud/hud.c\
 	 hud/info.c
 SRCS= $(addprefix $(SRC_DIR),$(SRC))

@@ -26,6 +26,16 @@ void	first_choose(t_data *data)
 {
 	if (data->fract < 4)
 		threads(data);
+	else if (data->fract == 7)
+	{
+		init_seirp(data);
+		sierpinski_carpet(data);
+	}
+	else if (data->fract == 6)
+	{
+		init_seirp(data);
+		koch(data);
+	}
 	else if (data->fract == 5)
 	{
 		init_fern(data);

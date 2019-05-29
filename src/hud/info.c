@@ -26,6 +26,10 @@ void	fractal_name(t_info *i, t_data *data)
 		sprintf(i->fract, "SIERPINKI'S TRIANGLE");
 	else if (data->fract == 5)
 		sprintf(i->fract, "BARNSLEY'S FERN");
+	else if (data->fract == 6)
+		sprintf(i->fract, "KOCH'S SNOWFLAKE");
+	else if (data->fract == 7)
+		sprintf(i->fract, "SIERPINKI'S CARPET");
 }
 
 void	generate_info(t_info *i, t_data *data)

@@ -31,6 +31,27 @@ void		create_hud_img(t_data *data)
 	box(p1, p2, data);
 }
 
+void		call_hud_bis(t_data *data)
+{
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 245, 0xffffff,
+		"C         : Change color palette");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 265, 0xffffff,
+		"W A S D   : Directionnal movement");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 285, 0xffffff,
+		"PG UP     : Max iteration increase");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 305, 0xffffff,
+		"PG DWN    : Max iteration decrease");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 325, 0xffffff,
+		"0 to 7    : Change fractal");
+	if (data->fract < 4)
+	{
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 345, 0xffffff,
+			"+ & -     : Zoom IN & OUT");
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 365, 0xffffff,
+			"Scroll UP & DWN : Zoom IN & OUT");
+	}
+}
+
 void		call_hud(t_data *data)
 {
 	t_info	i;
@@ -45,4 +66,9 @@ void		call_hud(t_data *data)
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 125, 0xffffff, i.y_off);
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 145, 0xffffff, i.cst_x);
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 165, 0xffffff, i.cst_y);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 970, 200, 0xffffff,
+		"KEYS:");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 225, 0xffffff,
+		"Space     : Reset changes");
+	call_hud_bis(data);
 }

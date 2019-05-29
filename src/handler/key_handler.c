@@ -46,6 +46,10 @@ void		deal_key_chooser(t_data *data)
 		sierpinski_triangle(data);
 	else if (data->fract == 5)
 		barnsley_fern(data);
+	else if (data->fract == 6)
+		koch(data);
+	else if (data->fract == 7)
+		sierpinski_carpet(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.img_ptr, 0, 0);
 	call_hud(data);
@@ -77,9 +81,11 @@ int			dealer(void *param)
 	data = (t_data *)param;
 	if (data->fract < 4)
 		deal_key(data);
-	else if (data->fract == 4)
+	else if (data->fract == 4 || data->fract == 7)
 		deal_key_sierpinski(data);
 	else if (data->fract == 5)
 		deal_key_fern(data);
+	else if (data->fract == 6)
+		deal_key_koch(data);
 	return (1);
 }

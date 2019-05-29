@@ -22,14 +22,18 @@ void	parser(char *str, t_data *data)
 		data->fract = 2;
 	else if (ft_strequ(str, "burning_ship") || ft_strequ(str, "Burning_ship"))
 		data->fract = 3;
-	else if (ft_strequ(str, "sierpinski") || ft_strequ(str, "Sierpinski"))
+	else if (ft_strequ(str, "triangle") || ft_strequ(str, "Triangle"))
 		data->fract = 4;
 	else if (ft_strequ(str, "fern") || ft_strequ(str, "Fern"))
 		data->fract = 5;
+	else if (ft_strequ(str, "koch") || ft_strequ(str, "Koch"))
+		data->fract = 6;
+	else if (ft_strequ(str, "carpet") || ft_strequ(str, "Carper"))
+		data->fract = 7;
 	else
 	{
 		ft_putstr("Aviable fractals are: Julia / Mandelbrot /");
-		ft_putendl(" Mandelbar / Burning ship / Sierpinski");
+		ft_putendl(" Mandelbar / Burning ship / Sierpinski / Koch");
 		exit(EXIT_FAILURE);
 	}
 }

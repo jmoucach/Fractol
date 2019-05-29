@@ -28,17 +28,17 @@ void	draw_triangle(t_data *data, t_pos pos[3])
 	draw_line(pos[2], pos[0], data, data->color[data->ind]);
 }
 
-void	divide(t_data *data, t_pos pos[3], int level)
+void	divide_triangle(t_data *data, t_pos pos[3], int level)
 {
 	if (level == 1)
 		draw_triangle(data, pos);
 	else
 	{
-		divide(data, (t_pos[3]){pos[0], find_mid(pos[0], pos[1]),
+		divide_triangle(data, (t_pos[3]){pos[0], find_mid(pos[0], pos[1]),
 			find_mid(pos[0], pos[2])}, level - 1);
-		divide(data, (t_pos[3]){find_mid(pos[0], pos[1]),
+		divide_triangle(data, (t_pos[3]){find_mid(pos[0], pos[1]),
 			pos[1], find_mid(pos[1], pos[2])}, level - 1);
-		divide(data, (t_pos[3]){find_mid(pos[0], pos[2]),
+		divide_triangle(data, (t_pos[3]){find_mid(pos[0], pos[2]),
 			find_mid(pos[1], pos[2]), pos[2]}, level - 1);
 	}
 }
@@ -55,5 +55,5 @@ void	sierpinski_triangle(t_data *data)
 	pos[1].y = 540 + data->yoff;
 	pos[2].x = 400 + data->xoff;
 	pos[2].y = cos(M_PI / 3) * len + data->yoff;
-	divide(data, pos, data->max_iter);
+	divide_triangle(data, pos, data->max_iter);
 }

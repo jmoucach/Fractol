@@ -82,4 +82,7 @@ void			box(t_pos p1, t_pos p2, t_data *data)
 	p5.y = 190;
 	p6.y = 190;
 	draw_line_hud(p5, p6, data, 0xffffff);
+	p5.y = WIN_HEIGHT - 400;
+	p6.y = WIN_HEIGHT - 400;
+	draw_line_hud(p5, p6, data, 0xffffff);
 }
