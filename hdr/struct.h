@@ -27,6 +27,29 @@ typedef struct	s_pos
 	int			y;
 }				t_pos;
 
+typedef struct	s_rgb
+{
+	double		r;
+	double		g;
+	double		b;
+}				t_rgb;
+
+typedef struct s_conv
+{
+	int		i;
+	double	f;
+	double	p;
+	double	q;
+	double	t;
+}				t_conv;
+
+typedef struct s_hsv
+{
+	double		h;
+	double		s;
+	double		v;
+}				t_hsv;
+
 typedef struct	s_img
 {
 	void		*img_ptr;

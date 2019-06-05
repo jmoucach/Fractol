@@ -12,17 +12,9 @@
 
 #include "../../hdr/fractol.h"
 
-void	deal_key_ter(t_data *data)
+void	deal_key_quater(t_data *data)
 {
-	if (data->keyboard[KEY_0] || data->keyboard[KEY_PAD_0])
-		data->fract = 0;
-	else if (data->keyboard[KEY_1] || data->keyboard[KEY_PAD_1])
-		data->fract = 1;
-	else if (data->keyboard[KEY_2] || data->keyboard[KEY_PAD_2])
-		data->fract = 2;
-	else if (data->keyboard[KEY_3] || data->keyboard[KEY_PAD_3])
-		data->fract = 3;
-	else if (data->keyboard[KEY_5] || data->keyboard[KEY_PAD_5])
+	if (data->keyboard[KEY_5] || data->keyboard[KEY_PAD_5])
 	{
 		init_fern(data);
 		data->fract = 5;
@@ -43,6 +35,19 @@ void	deal_key_ter(t_data *data)
 		data->fract = 7;
 	}
 	deal_key_chooser(data);
+}
+
+void	deal_key_ter(t_data *data)
+{
+	if (data->keyboard[KEY_0] || data->keyboard[KEY_PAD_0])
+		data->fract = 0;
+	else if (data->keyboard[KEY_1] || data->keyboard[KEY_PAD_1])
+		data->fract = 1;
+	else if (data->keyboard[KEY_2] || data->keyboard[KEY_PAD_2])
+		data->fract = 2;
+	else if (data->keyboard[KEY_3] || data->keyboard[KEY_PAD_3])
+		data->fract = 3;
+	deal_key_quater(data);
 }
 
 void	deal_key_bis(t_data *data)

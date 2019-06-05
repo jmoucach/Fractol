@@ -38,6 +38,8 @@ SRC= setup/main.c\
 	 draw/put_pixel.c\
 	 draw/bressenham.c\
 	 draw/draw_hud.c\
+	 draw/draw_order.c\
+	 draw/hsv_to_rgb.c\
 	 fractals/sierpinski_triangle.c\
 	 fractals/mandelbrot_set.c\
 	 fractals/burning_ship_set.c\

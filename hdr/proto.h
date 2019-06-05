@@ -38,6 +38,8 @@ void	burning_ship_set(t_data *data, int th);
 ** Deal-key
 */
 
+void	deal_key_quater(t_data *data);
+void	deal_key_ter(t_data *data);
 void	deal_key_bis(t_data *data);
 void	deal_key(t_data *data);
 
@@ -45,6 +47,7 @@ void	deal_key(t_data *data);
 ** Deal-key(Fern)
 */
 
+void	deal_key_fern_ter(t_data *data);
 void	deal_key_fern_bis(t_data *data);
 void	deal_key_fern(t_data *data);
 
@@ -52,6 +55,7 @@ void	deal_key_fern(t_data *data);
 ** Deal-key(Koch)
 */
 
+void	deal_key_koch_quater(t_data *data);
 void	deal_key_koch_ter(t_data *data);
 void	deal_key_koch_bis(t_data *data);
 void	deal_key_koch(t_data *data);
@@ -60,6 +64,7 @@ void	deal_key_koch(t_data *data);
 ** Deal-key(Sierpinksi)
 */
 
+void	deal_key_sierpinski_quater(t_data *data);
 void	deal_key_ter(t_data *data);
 void	deal_key_sierpinski_bis(t_data *data);
 void	deal_key_sierpinski(t_data *data);
@@ -68,8 +73,23 @@ void	deal_key_sierpinski(t_data *data);
 ** Draw (HUD)
 */
 
+void	put_pixel_hud(t_data *data, int x, int y, int color);
+void	draw_line_hud(t_pos a, t_pos b, t_data *data, int color);
 void	box(t_pos	p1, t_pos p2, t_data *data);
 void	color_hud(t_data *data);
+
+/*
+** Draw (Order logo)
+*/
+
+void	order(t_pos pos[15], t_data *data);
+void	draw_order(t_data *data);
+
+/*
+** HSV to RGB
+*/
+
+int		hsv_to_rgb(t_hsv hsv);
 
 /*
 ** Hud
@@ -164,7 +184,6 @@ void	put_pixel(t_data *data, int x, int y, int color);
 void	sierpinski_carpet(t_data *data);
 void	divide_carpet(t_data *data, t_pos p1, t_pos p2, int lvl);
 void	draw_square(t_data *data, t_pos p1, t_pos p2);
-
 
 /*
 ** Sierpinski triangle

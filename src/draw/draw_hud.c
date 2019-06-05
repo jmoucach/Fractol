@@ -15,6 +15,7 @@
 void			color_hud(t_data *data)
 {
 	int			i;
+	int			j;
 	int			m_width;
 
 	i = 0;
@@ -23,6 +24,17 @@ void			color_hud(t_data *data)
 	{
 		data->hud.img_str[i] = 0x808080;
 		i++;
+	}
+	j = WIN_HEIGHT - 399;
+	while (j <= WIN_HEIGHT - 11)
+	{
+		i = 11 + j * m_width;
+		while (i < m_width - 10 + j * m_width)
+		{
+			data->hud.img_str[i] = 0xFF6950;
+			i++;
+		}
+		j++;
 	}
 }
 
@@ -85,4 +97,5 @@ void			box(t_pos p1, t_pos p2, t_data *data)
 	p5.y = WIN_HEIGHT - 400;
 	p6.y = WIN_HEIGHT - 400;
 	draw_line_hud(p5, p6, data, 0xffffff);
+	draw_order(data);
 }

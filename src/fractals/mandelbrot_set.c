@@ -21,7 +21,7 @@ static int	iterate(t_data *data, double x, double y)
 	new.x = x;
 	new.y = y;
 	i = 0;
-	while (new.x * new.x + new.y * new.y < 4 && i < data->max_iter)
+	while (new.x * new.x + new.y * new.y < 20 && i < data->max_iter)
 	{
 		tmp = new.x;
 		new.x = new.x * new.x - new.y * new.y + x;
