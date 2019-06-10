@@ -57,12 +57,14 @@ void	deal_key_sierpinski_ter(t_data *data)
 
 void	deal_key_sierpinski_bis(t_data *data)
 {
-	if (data->keyboard[KEY_PAGE_UP])
-		if (data->max_iter < 9)
-			data->max_iter += 1;
-	if (data->keyboard[KEY_PAGE_DOWN])
+	if (data->keyboard[KEY_DOWN])
+	{
 		if (data->max_iter > 1)
 			data->max_iter -= 1;
+		data->keyboard[KEY_DOWN] = 0;
+	}
+	if (data->keyboard[KEY_PAD_ADD])
+		data->zoom += 1;
 	if (data->keyboard[KEY_SPACEBAR])
 		init_seirp(data);
 	if (data->keyboard[KEY_W])
@@ -92,5 +94,14 @@ void	deal_key_sierpinski(t_data *data)
 			data->ind = 0;
 		data->keyboard[KEY_C] = 0;
 	}
+	if (data->keyboard[KEY_UP])
+	{
+		if (data->max_iter < 9)
+			data->max_iter += 1;
+		data->keyboard[KEY_UP] = 0;
+	}
+	if (data->keyboard[KEY_PAD_SUB])
+		if (data->zoom > 0)
+			data->zoom -= 1;
 	deal_key_sierpinski_bis(data);
 }

@@ -45,12 +45,12 @@ void		koch(t_data *data)
 	t_pos	p2;
 	t_pos	p3;
 
-	p1.x = 200 + data->xoff;
-	p1.y = 240 + data->yoff;
-	p2.x = 600 + data->xoff;
-	p2.y = 240 + data->yoff;
+	p1.x = 100 + data->xoff - 10 * data->zoom;
+	p1.y = 140 + data->yoff - 10 * data->zoom;
+	p2.x = (WIN_HEIGHT - 100) + data->xoff + 10 * data->zoom;
+	p2.y = 140 + data->yoff - 10 * data->zoom;
 	p3.x = 400 + data->xoff;
-	p3.y = cos(M_PI / 3) * 600 + p1.y;
+	p3.y = cos(M_PI / 3) * (WIN_HEIGHT + 100) + p1.y + (2 * 10 * data->zoom);
 	koch_curve(data, p1, p2, data->max_iter);
 	koch_curve(data, p3, p1, data->max_iter);
 	koch_curve(data, p2, p3, data->max_iter);

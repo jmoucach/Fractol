@@ -37,10 +37,18 @@ void		call_hud_bis(t_data *data)
 		"C         : Change color palette");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 265, 0xffffff,
 		"W A S D   : Directionnal movement");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 285, 0xffffff,
-		"PG UP     : Max iteration increase");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 305, 0xffffff,
-		"PG DWN    : Max iteration decrease");
+	if (data->fract < 4 || data->fract == 5)
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 285, 0xffffff,
+			"PG UP     : Max iteration increase");
+	else
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 285, 0xffffff,
+			"ARROW UP  : Max iteration increase");
+	if (data->fract < 4 || data->fract == 5)
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 305, 0xffffff,
+			"PG DWN    : Max iteration decrease");
+	else
+		mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 305, 0xffffff,
+			"ARROW DWN : Max iteration decrease");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 830, 325, 0xffffff,
 		"0 to 7    : Change fractal");
 	if (data->fract < 4)

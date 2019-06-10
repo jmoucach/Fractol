@@ -60,10 +60,10 @@ void	deal_key_fern(t_data *data)
 		exit(EXIT_SUCCESS);
 	}
 	if (data->keyboard[KEY_PAGE_UP])
-		data->max_iter *= 2;
+		data->max_iter += 5000;
 	if (data->keyboard[KEY_PAGE_DOWN])
-		if (data->max_iter >= 2)
-			data->max_iter /= 2;
+		if (data->max_iter >= 10000)
+			data->max_iter -= 5000;
 	if (data->keyboard[KEY_W])
 		data->yoff += 0.05;
 	if (data->keyboard[KEY_S])

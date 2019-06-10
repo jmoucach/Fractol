@@ -34,7 +34,7 @@ typedef struct	s_rgb
 	double		b;
 }				t_rgb;
 
-typedef struct s_conv
+typedef struct	s_conv
 {
 	int		i;
 	double	f;
@@ -43,7 +43,7 @@ typedef struct s_conv
 	double	t;
 }				t_conv;
 
-typedef struct s_hsv
+typedef struct	s_hsv
 {
 	double		h;
 	double		s;

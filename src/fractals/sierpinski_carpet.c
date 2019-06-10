@@ -58,9 +58,9 @@ void		sierpinski_carpet(t_data *data)
 	t_pos	p1;
 	t_pos	p2;
 
-	p1.x = 200 + data->xoff;
-	p1.y = 200 + data->yoff;
-	p2.x = 600 + data->xoff;
-	p2.y = 600 + data->yoff;
+	p1.x = 200 + data->xoff - 10 * data->zoom;
+	p1.y = 200 + data->yoff - 10 * data->zoom;
+	p2.x = (WIN_HEIGHT - 200) + data->xoff + 10 * data->zoom;
+	p2.y = (WIN_HEIGHT - 200) + data->yoff + 10 * data->zoom;
 	divide_carpet(data, p1, p2, data->max_iter);
 }

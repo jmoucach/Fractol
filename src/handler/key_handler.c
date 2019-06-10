@@ -32,7 +32,7 @@ int			mouse_press(int button, int x, int y, void *param)
 		threads(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img.img_ptr, 0, 0);
-	call_hud(data);
+		call_hud(data);
 	}
 	return (1);
 }
@@ -70,7 +70,7 @@ int			key_release(int key, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	if (key != KEY_C && key != KEY_TILDE)
+	if (key != KEY_C && key != KEY_TILDE && key != KEY_UP && key != KEY_DOWN)
 		data->keyboard[key] = 0;
 	return (0);
 }

@@ -28,12 +28,12 @@ void	parser(char *str, t_data *data)
 		data->fract = 5;
 	else if (ft_strequ(str, "koch") || ft_strequ(str, "Koch"))
 		data->fract = 6;
-	else if (ft_strequ(str, "carpet") || ft_strequ(str, "Carper"))
+	else if (ft_strequ(str, "carpet") || ft_strequ(str, "Carpet"))
 		data->fract = 7;
 	else
 	{
-		ft_putstr("Aviable fractals are: Julia / Mandelbrot /");
-		ft_putendl(" Mandelbar / Burning ship / Sierpinski / Koch");
+		ft_putstr("Aviable fractals are: Julia / Mandelbrot / Fern /");
+		ft_putendl(" Mandelbar / Burning ship / Sierpinski / Koch / Carpet");
 		exit(EXIT_FAILURE);
 	}
 }

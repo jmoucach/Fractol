@@ -35,6 +35,7 @@ void	init_data(t_data *data)
 void	init_seirp(t_data *data)
 {
 	data->max_iter = 1;
+	data->zoom = 1;
 	data->xoff = 0;
 	data->yoff = 0;
 	data->permit = 0;
@@ -43,7 +44,7 @@ void	init_seirp(t_data *data)
 
 void	init_fern(t_data *data)
 {
-	data->max_iter = 2048;
+	data->max_iter = 5000;
 	data->xoff = 0;
 	data->yoff = 0;
 	data->permit = 0;

@@ -49,11 +49,11 @@ void	sierpinski_triangle(t_data *data)
 	int		len;
 
 	len = data->slength;
-	pos[0].x = 200 + data->xoff;
-	pos[0].y = 540 + data->yoff;
-	pos[1].x = 600 + data->xoff;
-	pos[1].y = 540 + data->yoff;
+	pos[0].x = 200 + data->xoff - 10 * data->zoom;
+	pos[0].y = 540 + data->yoff + 10 * data->zoom;
+	pos[1].x = 600 + data->xoff + 10 * data->zoom;
+	pos[1].y = 540 + data->yoff + 10 * data->zoom;
 	pos[2].x = 400 + data->xoff;
-	pos[2].y = cos(M_PI / 3) * len + data->yoff;
+	pos[2].y = cos(M_PI / 3) * len + data->yoff - 10 * data->zoom;
 	divide_triangle(data, pos, data->max_iter);
 }
