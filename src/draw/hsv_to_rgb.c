@@ -92,14 +92,3 @@ int			hsv_to_rgb(t_hsv hsv)
 	rgb.b *= 255;
 	return ((int)rgb.r << 16 | (int)rgb.g << 8 | (int)rgb.b);
 }
-/*
-int main(int ac, char **av)
-{
-	t_hsv hsv;
-	hsv.h = atoi(av[1]);
-	hsv.s = atoi(av[2]);
-	hsv.v = atoi(av[3]);
-
-	printf("%d\n", hsv_to_rgb(hsv));
-}
-*/
