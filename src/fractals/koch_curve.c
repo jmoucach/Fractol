@@ -35,7 +35,7 @@ void		koch_curve(t_data *data, t_pos p1, t_pos p2, int lvl)
 	}
 	else
 	{
-		draw_line(p1, p2, data, 0xffffff);
+		draw_line(p1, p2, data, data->color[data->ind]);
 	}
 }
 

@@ -22,7 +22,7 @@ void		draw_square(t_data *data, t_pos p1, t_pos p2)
 	{
 		p3.y++;
 		p1.y++;
-		draw_line(p1, p3, data, 0xffffff);
+		draw_line(p1, p3, data, data->color[data->ind]);
 	}
 }
 

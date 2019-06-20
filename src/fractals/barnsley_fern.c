@@ -16,8 +16,10 @@ static t_pos	map(t_cpx pt, t_data *data)
 {
 	t_pos		map;
 
-	map.x = (WIN_HEIGHT / (2.6558 + 2.1820)) * (pt.x + data->xoff + 2.1820);
-	map.y = (-WIN_HEIGHT / 9.9983) * (pt.y + data->yoff) + WIN_HEIGHT;
+	map.x = WIN_HEIGHT / (2.6558 + 2.1820) * (pt.x + data->xoff + 2.1820)
+		* data->zoom;
+	map.y = ((-WIN_HEIGHT / 9.9983) * (pt.y + data->yoff) + WIN_HEIGHT)
+		* data->zoom;
 	return (map);
 }
 
@@ -62,7 +64,7 @@ void			barnsley_fern(t_data *data)
 	{
 		next_point(&pt);
 		out = map(pt, data);
-		put_pixel(data, out.x, out.y, 0x009933);
+		put_pixel(data, out.x, out.y, data->color[data->ind]);
 		i++;
 	}
 }

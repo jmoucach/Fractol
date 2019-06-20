@@ -40,14 +40,17 @@ void	init_seirp(t_data *data)
 	data->yoff = 0;
 	data->permit = 0;
 	data->slength = 400;
+	data->ind = 0;
 }
 
 void	init_fern(t_data *data)
 {
-	data->max_iter = 5000;
+	data->zoom = 1;
+	data->max_iter = 25000;
 	data->xoff = 0;
 	data->yoff = 0;
 	data->permit = 0;
+	data->ind = 7;
 }
 
 void	init(t_data *data)

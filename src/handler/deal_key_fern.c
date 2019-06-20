@@ -29,6 +29,13 @@ void	deal_key_fern_ter(t_data *data)
 		init_seirp(data);
 		data->fract = 7;
 	}
+	if (data->keyboard[KEY_C])
+	{
+		data->ind += 1;
+		if (data->ind > 9)
+			data->ind = 0;
+		data->keyboard[KEY_C] = 0;
+	}
 	deal_key_chooser(data);
 }
 
@@ -47,6 +54,11 @@ void	deal_key_fern_bis(t_data *data)
 		data->fract = 2;
 	else if (data->keyboard[KEY_3] || data->keyboard[KEY_PAD_3])
 		data->fract = 3;
+	if (data->keyboard[KEY_PAD_SUB])
+		if (data->zoom > 1)
+			data->zoom /= 1.1;
+	if (data->keyboard[KEY_PAD_ADD])
+		data->zoom *= 1.1;
 	deal_key_fern_ter(data);
 }
 
